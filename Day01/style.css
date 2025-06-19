@@ -1,0 +1,10 @@
+.flex-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.flex-container > * {
+	border: 2px dashed red;
+	width: 50%;
+}
