@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.container {
+				display: flex;
+				background-color: #f0f0f0;
+				padding: 10px;
+				gap: 10px;
+				width: 300px;
+				height: 300px;
+				justify-content: flex-start;
+				align-items: flex-end;
+			}
+
+			.item {
+				background-color: #4caf50;
+				color: white;
+				font-size: 20px;
+				border: 2px solid yellow;
+			}
+			.item-1 {
+				flex-grow: 2;
+				flex-shrink: 2;
+				flex-basis: 100px;
+			}
+			.item-2 {
+				/* flex-grow: 1;
+				flex-shrink: 1;
+				flex-basis: 100px; */
+				flex: 1 1 100px;
+				/* shorthand */
+				align-self: start;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="item item-1">Item 1</div>
+			<div class="item item-2">Item 2</div>
+			<div class="item item-3">Item 3</div>
+		</div>
+	</body>
+</html>

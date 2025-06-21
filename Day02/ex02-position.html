@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+			}
+			.parent {
+				width: 300px;
+				height: 300px;
+				border: 1px solid violet;
+				background-color: yellow;
+				position: relative;
+			}
+
+			.child {
+				width: 100px;
+				height: 100px;
+				background-color: rgba(0, 0, 255, 0.5);
+				/* position: fixed;
+				right: 0;
+				z-index: -100; */
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+			<p class="child">Lorem ipsum dolor sit.</p>
+			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias, laborum.</p>
+		</div>
+	</body>
+</html>
