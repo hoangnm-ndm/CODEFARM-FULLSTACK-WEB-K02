@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.parent .child {
+				color: red;
+			}
+
+			.element + .element {
+				color: blue;
+			}
+
+			h2 ~ p {
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="parent">
+			<div class="wrap">
+				<div class="child">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus provident iusto rem molestiae quasi nobis
+					porro repellat necessitatibus debitis reprehenderit illum perferendis, magnam, incidunt autem, velit accusamus
+					possimus officia fugit.
+				</div>
+			</div>
+		</div>
+
+		<div class="element">Lorem ipsum dolor sit.</div>
+		<div class="element">Lorem ipsum dolor sit.</div>
+		<div class="element">Lorem ipsum dolor sit.</div>
+		<div class="element">Lorem ipsum dolor sit.</div>
+		<div class="element">Lorem ipsum dolor sit.</div>
+
+		<p>Lorem ipsum dolor sit.</p>
+
+		<h2>Lorem ipsum dolor sit.</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, laborum!</p>
+		<p>Lorem ipsum dolor sit.</p>
+	</body>
+</html>

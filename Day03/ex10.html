@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			p {
+				position: relative;
+				text-align: center;
+				/* background-color: #fff; */
+				/* display: inline-block; */
+			}
+			p::before {
+				content: "";
+				border: 1px solid #ccc;
+				height: 0;
+				width: 100px;
+				position: absolute;
+				top: 50%;
+				left: 10px;
+				transform: translateX(-50%);
+			}
+
+			p::after {
+				content: "";
+				border: 1px solid #ccc;
+				height: 0;
+				width: 40%;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translateX(50%);
+			}
+		</style>
+	</head>
+	<body>
+		<p>Or</p>
+	</body>
+</html>
