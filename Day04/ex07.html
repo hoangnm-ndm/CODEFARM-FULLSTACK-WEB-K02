@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<style>
+			.class-1 {
+				border: 1px solid red;
+			}
+			.class-1 > div {
+				margin: 0 auto;
+				/* căn giữa phần tử theo chiều ngang */
+				background-color: aquamarine;
+				width: 300px;
+				text-align: center;
+				/* căn giữa nội dung */
+				height: 200px;
+
+				/* Căn giữa theo chiều dọc: vertical-align, line-height */
+			}
+
+			.container {
+				display: flex;
+				width: 200px;
+				height: 200px;
+				justify-content: center;
+				align-items: center;
+				background-color: green;
+				> div {
+					background-color: yellow;
+					width: 50px;
+					height: 50px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="class-1">
+			<div>Lorem ipsum</div>
+		</div>
+
+		<div class="container">
+			<div></div>
+		</div>
+	</body>
+</html>
