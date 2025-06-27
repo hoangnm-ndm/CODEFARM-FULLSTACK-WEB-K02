@@ -5,6 +5,74 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+		<style>
+			* {
+				box-sizing: border-box;
+				padding: 0;
+			}
+			div {
+				width: 200px;
+				height: 200px;
+				border: 3px solid red;
+				position: relative;
+			}
+
+			i {
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translate(-50%, -50%);
+				/* animation: myAnimation 4s ease infinite; */
+			}
+
+			@keyframes myAnimation {
+				0% {
+					transform: translate(-50%, -50%) rotate(0);
+					top: 0;
+					left: 0;
+				}
+				24% {
+					transform: translate(-50%, -50%) rotate(0);
+					top: 0;
+					left: 100%;
+				}
+				25% {
+					transform: translate(-50%, -50%) rotate(90deg);
+					top: 0;
+					left: 100%;
+				}
+				49% {
+					transform: translate(-50%, -50%) rotate(90deg);
+					top: 100%;
+					left: 100%;
+				}
+				50% {
+					transform: translate(-50%, -50%) rotate(180deg);
+					top: 100%;
+					left: 100%;
+				}
+				74% {
+					transform: translate(-50%, -50%) rotate(180deg);
+					top: 100%;
+					left: 0%;
+				}
+				75% {
+					transform: translate(-50%, -50%) rotate(270deg);
+					top: 100%;
+					left: 0%;
+				}
+				99% {
+					transform: translate(-50%, -50%) rotate(270deg);
+					top: 0%;
+					left: 0%;
+				}
+				100% {
+					transform: translate(-50%, -50%) rotate(360deg);
+					top: 0%;
+					left: 0%;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<div>
