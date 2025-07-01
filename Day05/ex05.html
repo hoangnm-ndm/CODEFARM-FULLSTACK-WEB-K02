@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				display: grid;
+				grid-template-columns: 200px 1fr 1fr;
+				grid-template-rows: 100px minmax(400px, auto) minmax(200px, auto) 100px;
+				gap: 10px;
+				font-size: 32px;
+			}
+
+			body > * {
+				border: 1px solid #333;
+				background-color: greenyellow;
+			}
+
+			header,
+			footer {
+				/* grid-column: 1 / span 3; */
+				grid-column: 1 / 4;
+			}
+
+			#side-bar {
+				grid-row: 2 / 4;
+			}
+
+			#section-1 {
+				grid-column: 2 / 4;
+			}
+		</style>
+	</head>
+	<body>
+		<header>HEADER</header>
+		<div id="side-bar">Side Bar</div>
+		<section id="section-1">Section 1</section>
+		<section id="section-2">Section 2</section>
+		<section id="section-3">Section 3</section>
+		<footer>Footer</footer>
+	</body>
+</html>

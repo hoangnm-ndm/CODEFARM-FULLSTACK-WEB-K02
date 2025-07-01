@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				display: grid;
+				grid-template: auto / 200px 1fr;
+				gap: 10px;
+			}
+
+			body > * {
+				background-color: yellowgreen;
+				padding: 12px;
+				color: red;
+			}
+
+			header,
+			footer {
+				grid-column: 1 / 3;
+			}
+
+			.products {
+				min-height: 600px;
+			}
+			@media screen and (max-width: 768px) {
+				.side-bar {
+					grid-column: 1 / span 2;
+				}
+				.products {
+					grid-column: 1 / span 2;
+				}
+			}
+
+			/* @media only print {
+				* {
+					background-color: #fff;
+					color: #000;
+				}
+			} */
+		</style>
+	</head>
+	<body>
+		<header>Header</header>
+		<div class="side-bar">Thanh dieu khien</div>
+		<div class="products">
+			<h1>Danh sach san pham</h1>
+		</div>
+		<footer>Footer</footer>
+	</body>
+</html>

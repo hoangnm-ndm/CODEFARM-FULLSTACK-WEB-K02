@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				display: grid;
+				grid-template-areas:
+					"header header header"
+					"sideBar section1 section1"
+					"sideBar section2 section3"
+					"footer footer footer";
+				gap: 10px;
+				font-size: 32px;
+			}
+
+			body > * {
+				border: 1px solid #333;
+				background-color: greenyellow;
+				padding: 30px;
+			}
+
+			header {
+				grid-area: header;
+			}
+
+			#side-bar {
+				grid-area: sideBar;
+			}
+
+			#section-1 {
+				grid-area: section1;
+			}
+
+			#section-2 {
+				grid-area: section2;
+			}
+
+			#section-3 {
+				grid-area: section3;
+			}
+			footer {
+				grid-area: footer;
+			}
+		</style>
+	</head>
+	<body>
+		<header>HEADER</header>
+		<div id="side-bar">Side Bar</div>
+		<section id="section-1">Section 1</section>
+		<section id="section-2">Section 2</section>
+		<section id="section-3">Section 3</section>
+		<footer>Footer</footer>
+	</body>
+</html>

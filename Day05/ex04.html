@@ -4,6 +4,38 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			.container {
+				width: 100%;
+				border: 1px solid red;
+				display: grid;
+				gap: 5px;
+				height: 300px;
+				grid-template-columns: repeat(6, 1fr);
+				grid-template-rows: repeat(4, 1fr);
+			}
+			.item {
+				background-color: greenyellow;
+			}
+
+			.item-1 {
+				grid-column: span 6;
+			}
+
+			.item-2,
+			.item-3 {
+				grid-column: span 3;
+			}
+
+			.item-4,
+			.item-5,
+			.item-6 {
+				grid-column: span 2;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
