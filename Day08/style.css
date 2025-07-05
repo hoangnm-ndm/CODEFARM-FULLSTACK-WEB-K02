@@ -4,3 +4,70 @@
 	font-family: "LOLfont";
 	src: url("./fonts/BeaufortforLOL-Bold.ttf");
 }
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--ff-primary: "LOLfont", serif;
+	--color-primary: #0e4c67;
+}
+
+html {
+	font-family: var(--ff-primary);
+	font-weight: 700;
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+button,
+a {
+	transition: all ease-in-out 0.3s;
+}
+
+#banner {
+	img {
+		width: 100%;
+	}
+}
+
+#header {
+	.logo {
+		margin: 32px auto;
+		width: 240px;
+		img {
+			width: 100%;
+		}
+	}
+	nav > ul {
+		margin: 0 auto 62px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px;
+		a {
+			padding: 6px;
+			text-transform: capitalize;
+		}
+		a:hover {
+			border-bottom: 2px solid var(--color-primary);
+			background-color: #0e4c6733;
+			border-radius: 8px 8px 0 0;
+			text-shadow: 0.1em 0.1em 0 hsl(200 50% 30%);
+		}
+	}
+}
