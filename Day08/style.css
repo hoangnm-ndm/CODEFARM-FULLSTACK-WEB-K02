@@ -115,7 +115,7 @@ footer {
 	justify-content: space-between;
 	align-items: center;
 	background-color: var(--color-primary);
-	p {
+	.copyright {
 		color: #fff;
 	}
 	form {
@@ -137,10 +137,50 @@ footer {
 			padding: 14px 24px;
 			font-size: 16px;
 			background-color: #ffa800;
+			border: 2px solid #ffa800;
 			color: #fff;
 			border-radius: 8px;
 			font-weight: 800;
 			font-family: var(--ff-primary);
 		}
 	}
+}
+
+@media screen and (max-width: 991.98px) {
+	#figures {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 767.98px) {
+	#header {
+		.logo {
+			margin: 28px auto;
+			width: 180px;
+		}
+		nav > ul {
+			margin: 0 auto 44px;
+			padding: 0 48px;
+		}
+	}
+	#figures {
+		margin: 0 12px 48px;
+		grid-template-columns: repeat(2, 1fr);
+		.figure {
+			font-size: 16px;
+			p {
+				padding: 18px;
+			}
+		}
+	}
+	footer {
+		flex-direction: column-reverse;
+		.copyright {
+			color: #fff;
+			margin-top: 32px;
+		}
+	}
+}
+
+@media screen and (max-width: 575.98px) {
 }
