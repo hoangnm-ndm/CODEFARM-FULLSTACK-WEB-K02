@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="button" />
+		<input type="checkbox" />
+		<input type="color" />
+		<input type="date" />
+		<input type="datetime-local" />
+		<input type="email" />
+		<input type="file" />
+		<input type="hidden" />
+		<input type="image" />
+		<input type="month" />
+		<input type="number" />
+		<input type="password" />
+		<input type="radio" />
+		<p>range</p>
+		<input type="range" />
+		<input type="reset" />
+		<input type="search" />
+		<input type="submit" />
+		<input type="tel" />
+		<input type="text" />
+		<input type="time" />
+		<input type="url" />
+		<input type="week" />
+
+		<p>Lọc theo khoảng giá</p>
+		<div style="width: 300px; position: relative; height: 50px">
+			<input type="range" id="min" min="0" max="100" value="20" step="1" style="position: absolute; width: 100%" />
+			<input type="range" id="max" min="0" max="100" value="80" step="1" style="position: absolute; width: 100%" />
+		</div>
+		<p>Giá từ: <span id="min-val">20</span> đến <span id="max-val">80</span></p>
+
+		<script>
+			const minSlider = document.getElementById("min");
+			const maxSlider = document.getElementById("max");
+			const minVal = document.getElementById("min-val");
+			const maxVal = document.getElementById("max-val");
+			const minGap = 1; // khoảng cách tối thiểu giữa min và max
+
+			function updateMin() {
+				if (parseInt(maxSlider.value) - parseInt(minSlider.value) <= minGap) {
+					minSlider.value = parseInt(maxSlider.value) - minGap;
+				}
+				minVal.textContent = minSlider.value;
+			}
+
+			function updateMax() {
+				if (parseInt(maxSlider.value) - parseInt(minSlider.value) <= minGap) {
+					maxSlider.value = parseInt(minSlider.value) + minGap;
+				}
+				maxVal.textContent = maxSlider.value;
+			}
+
+			minSlider.addEventListener("input", updateMin);
+			maxSlider.addEventListener("input", updateMax);
+		</script>
+	</body>
+</html>
