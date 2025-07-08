@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			.products {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				column-gap: 20px;
+				width: 100%;
+				overflow-x: auto;
+				scroll-snap-type: x mandatory;
+				-webkit-overflow-scrolling: touch;
+				padding: 10px;
+			}
+			.item {
+				border: 2px solid red;
+				height: 300px;
+				/* flex: 1 1 300px; */
+				min-width: 300px;
+				flex: 0 0 auto;
+				min-width: 300px;
+				scroll-snap-align: start;
+			}
+
+			.products::-webkit-scrollbar {
+				display: none;
+			}
+			.products {
+				-ms-overflow-style: none; /* IE and Edge */
+				scrollbar-width: none; /* Firefox */
+			}
+
+			@media screen and (min-width: 576px) {
+				.products {
+					overflow: visible;
+					justify-content: space-between;
+					flex-wrap: wrap;
+				}
+
+				.item {
+					flex: 1 1 300px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="products">
+			<div class="item">item 1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+		</div>
+
+		<h2>Vi du phan khac</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi maiores fuga cupiditate cumque dolorem ad quam
+			rerum, quia dicta perferendis fugiat consectetur dolore recusandae blanditiis maxime illo ab velit tempora aliquid
+			saepe? Cum explicabo error a quisquam vitae architecto voluptas maiores sed vel dolor id ab adipisci modi sit
+			eaque asperiores totam ex, quos praesentium laborum inventore voluptatem atque. Ipsum blanditiis laborum impedit
+			optio vero neque excepturi eum tenetur? Dignissimos aut, natus facere consequuntur voluptatem enim delectus qui
+			sit, maxime ea eum maiores necessitatibus magnam est voluptas quis molestias expedita, sint alias odio suscipit.
+			Repellendus corporis illum provident enim quas?
+		</p>
+	</body>
+</html>

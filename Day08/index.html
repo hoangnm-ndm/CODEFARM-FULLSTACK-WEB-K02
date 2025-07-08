@@ -4,109 +4,110 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>LOL Landing page</title>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
 		<section id="banner">
-			<img src="./imgs/banner.jpg" alt="Banner for LOL Game" />
+			<img src="./imgs/banner.jpg" alt="Banner for LOL Game" data-aos="zoom-in-down" />
 		</section>
 		<header id="header">
-			<div class="logo">
+			<div class="logo" data-aos="zoom-out">
 				<img src="./imgs/logo.png" alt="" />
 			</div>
 			<nav>
 				<ul>
-					<li><a href="/game">game</a></li>
-					<li><a href="/champions">champions</a></li>
-					<li><a href="/news">news</a></li>
-					<li><a href="/path-notes">path notes</a></li>
-					<li><a href="/discover">discover</a></li>
-					<li><a href="/esports">esports</a></li>
-					<li><a href="/universe">universe</a></li>
+					<li data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"><a href="/game">game</a></li>
+					<li data-aos="fade-down" data-aos-anchor-placement="bottom-bottom"><a href="/champions">champions</a></li>
+					<li data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"><a href="/news">news</a></li>
+					<li data-aos="fade-down" data-aos-anchor-placement="bottom-bottom"><a href="/path-notes">path notes</a></li>
+					<li data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"><a href="/discover">discover</a></li>
+					<li data-aos="fade-down" data-aos-anchor-placement="bottom-bottom"><a href="/esports">esports</a></li>
+					<li data-aos="fade-up" data-aos-anchor-placement="bottom-bottom"><a href="/universe">universe</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<section id="figures">
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
 				</a>
 			</div>
 
-			<div class="figure">
+			<div class="figure" data-aos="zoom-out-down">
 				<a href="/figure/ahri">
 					<img src="./imgs/image-31.jpg" alt="ahri" />
 					<p>ahri</p>
@@ -133,5 +134,15 @@
 				<button>Play for free</button>
 			</form>
 		</footer>
+
+		<!-- AOS -->
+
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+		<script>
+			AOS.init({
+				duration: 3000,
+			});
+		</script>
 	</body>
 </html>
