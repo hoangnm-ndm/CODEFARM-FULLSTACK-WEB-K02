@@ -1,9 +1,9 @@
 /**
  * * find, findLast (trả về phần tử đầu tiên hoặc cuối cùng thoả mãn callback - phù hợp để tìm đối tượng trong mảng)
  * * findIndex, findLastIndex (trả về vị trí của phần tử đầu tiên hoặc cuối cùng thoả mãn callback - phù hợp để tìm vị trí của đối tượng trong mảng)
- * filter
- * some
- * every
+ * * filter (trả về mảng có số lượng phần tử ít hơn hoặc bằng mảng gốc, các phần tử ở mảng mới thoả mãn callback)
+ * * some
+ * * every
  * * includes (tìm và trả về true/false theo giá trị tìm kiếm)
  * * indexOf, lastIndexOf (Trả về vị trí của phần tử đầu tiên hoặc cuối cùng bằng với giá trị đang tìm)
  *
@@ -31,7 +31,6 @@ const animals = ["camel", "dog", "cat", "elephant", "cat"];
 // console.log(animals.lastIndexOf("cat"));
 // console.log(animals.includes("bufterfly"));
 
-const roles = ["superAdmin", "admin"];
 function restrictTo(user, roles) {
 	// * Kiểm tra user có role (vai trò) trong danh sách vai trò được cấp phép (roles) không?
 
@@ -44,6 +43,6 @@ function restrictTo(user, roles) {
 
 const studentA = {
 	name: "Nguyen Minh Hoang",
-	role: "teacher",
+	role: "guest",
 };
 restrictTo(studentA, ["superAdmin", "teacher"]);
