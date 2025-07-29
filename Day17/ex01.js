@@ -1,6 +1,6 @@
 const arr = [1, 5, 4, 2, 7, 0, 9, 10, 100, -10, 1000, 3];
 
-console.log(arr.sort((a, b) => a - b));
+// console.log(arr.sort((a, b) => a - b));
 
 /**
  * * sort(compareFn?)
@@ -25,6 +25,7 @@ const students = [
 	{ id: 3, name: "Vinh", age: 21 },
 	{ id: 4, name: "VanAnh", age: 19 },
 	{ id: 5, name: "Phuong", age: 21 },
+	{ id: 6, name: "Hoang", age: 21 },
 ];
 
 /**
@@ -50,11 +51,15 @@ function sortByField(arr, fieldName) {
 	const typeOfField = checkTypeOfField(arr, fieldName);
 	console.log(typeOfField);
 	if (typeOfField === "number") {
-		// * logic sap xep
+		arr.sort((a, b) => a[fieldName] - b[fieldName]);
+		return arr;
 	} else if (typeOfField === "string") {
-		// * logic sap xep
+		arr.sort((a, b) => (a[fieldName] > b[fieldName] ? 1 : -1));
+		return arr;
 	} else {
 		console.log("Invalid");
 		return arr;
 	}
 }
+
+console.log(sortByField(students, "name"));
