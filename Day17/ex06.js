@@ -7,6 +7,20 @@ const students = [
 	{ id: 6, name: "Thinh", address: "Quang Bi" },
 ];
 
+const result = students.reduce((acc, cur) => {
+	if (!acc[cur.address]) {
+		// * Nếu chưa có địa chỉ đó trong object đích thì tạo ra với giá trị là []
+		acc[cur.address] = [];
+	}
+
+	// * push thêm phần tử vào acc[cur.address]
+	acc[cur.address].push(cur);
+
+	return acc;
+}, {});
+
+console.log(result);
+
 /**
  * * Dùng reduce để phân nhóm các học viên theo quê quán.
  */
