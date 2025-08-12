@@ -42,6 +42,8 @@ function generateKeys(str) {
 
 function replaceAllString(str) {
 	const cases = generateKeys("hoang");
+	console.log(cases);
+	console.log(cases.length);
 	let newStr = replaceString(str, 0, cases);
 	return newStr;
 }
