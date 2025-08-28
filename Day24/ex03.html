@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="example">
+    <p>Đoạn văn bản hiển thị</p>
+
+    
+    <p style="display: none;">Đoạn văn bản bị ẩn</p>
+
+
+
+  </div>
+  
+  <script>
+    let div = document.getElementById('example')
+  
+    console.log(div.innerText) // Kết quả: "Đoạn văn bản hiển thị" (không bao gồm văn bản ẩn)
+    console.log(div.outerText)
+    console.log(div.textContent) // Kết quả: "Đoạn văn bản hiển thịĐoạn văn bản bị ẩn" (bao gồm cả văn bản ẩn)
+  </script>
+  
+</body>
+</html>

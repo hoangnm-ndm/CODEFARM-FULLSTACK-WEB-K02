@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="myElement">Xin chào!</div>
+  <div class="container">
+    noi dung trong div.
+    <div>
+      <h3>noi dung h3</h3>
+      <ul>
+
+        
+        <li>item 1</li>
+        <li>item 1</li>
+        <li>item 1</li>
+        <li>item 1</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+  //   let outerTextContent = document.getElementById('myElement').outerText
+  // console.log(outerTextContent)
+
+  // document.getElementById("myElement").outerText = `<p>Thay thế toàn bộ</p>`;
+  // console.log(document.getElementById("myElement"))
+
+  const containerElement = document.getElementsByClassName("container")[0]
+  console.log(containerElement.outerText)
+  containerElement.outerText = `
+  
+van ban thay the
+
+
+
+dong thu 2
+
+
+
+
+  `
+  </script>
+</body>
+</html>

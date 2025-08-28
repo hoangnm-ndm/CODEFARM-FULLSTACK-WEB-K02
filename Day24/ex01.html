@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h2 id="title">Xin      chao!</h2>
+
+		<div class="container">
+			noi dung trong div.
+			<div>
+				<h3>noi dung h3</h3>
+				<ul>
+
+					
+					<li>item 1</li>
+					<li>item 1</li>
+					<li>item 1</li>
+					<li>item 1</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			const h2Element = document.getElementById("title");
+
+			console.log(h2Element.innerText);
+			h2Element.innerText = `     
+			         
+			
+			
+			Hello`
+
+			console.log(h2Element.innerText)
+
+			const containerElement = document.getElementsByClassName("container")[0]
+			console.log(containerElement.innerText)
+		</script>
+	</body>
+</html>
