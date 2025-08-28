@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.class-1 {
+				display: block;
+				background-color: red;
+				transition: all ease-in-out 0.5s;
+			}
+			.class-1:hover {
+				display: none;
+				background-color: red;
+			}
+			.class-2 {
+				visibility: visible;
+				background-color: green;
+				transition: all ease-in-out 0.5s;
+			}
+			.class-2:hover {
+				visibility: hidden;
+			}
+			.class-3 {
+				opacity: 0;
+				/* color: rgba(255, 0, 0, 0.5); */
+				/* background-color: rgba(255, 0, 0, 0.5); */
+				background-color: blue;
+				transition: all ease-in-out 0.5s;
+			}
+
+			.class-3:hover {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="class-1">Lorem ipsum dolor sit.</p>
+		<p class="class-2">Lorem ipsum dolor sit.</p>
+		<button class="class-3" onclick="console.log(1)">Lorem ipsum dolor sit.</button>
+		<p class="class-4">Lorem ipsum dolor sit.</p>
+	</body>
+</html>

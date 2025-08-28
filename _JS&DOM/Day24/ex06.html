@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- Cach 1 -->
+		<button id="btn" onclick="console.log(`bam`)">click</button>
+
+		<script>
+			// * Cach 2: Gắn thông qua property của phần tử bằng JS
+			const btnElement = document.getElementById("btn");
+			console.log({ btnElement });
+			// btnElement.onclick = function () {
+			// 	console.log("click me lan 1!");
+			// };
+			// btnElement.onclick = function () {
+			// 	console.log("click me lan 2!");
+			// };
+
+			// Cach 3: dùng eventLister
+
+			btnElement.addEventListener("click", function () {
+				console.log("Lang nghe su kien 1");
+			});
+
+			btnElement.addEventListener("click", function () {
+				console.log("Lang nghe su kien 2");
+			});
+
+			btnElement.addEventListener("click", function () {
+				console.log("Lang nghe su kien 2");
+			});
+
+			btnElement.addEventListener("click", function () {
+				console.log("Lang nghe su kien 2");
+			});
+			const click = function () {
+				console.log("Lang nghe su kien 10");
+			};
+
+			btnElement.addEventListener("click", click);
+			btnElement.removeEventListener("click", click);
+		</script>
+	</body>
+</html>
