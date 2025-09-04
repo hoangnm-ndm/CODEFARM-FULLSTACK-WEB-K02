@@ -13,20 +13,24 @@ let minutes = Math.abs(Number.parseInt(prompt("Nhap so phut!")));
 
 minute.innerText = minutes;
 
-function start() {
-  // * Bắt đầu tính giờ
-  console.log("bat dau");
-  // * cập nhật lại giao diện sau mỗi giây
-  // * Nếu như thời gian === 0 thì dừng cập nhật và bật alert("ket thuc")
+let totalSeconds = minutes * 60;
+console.log(totalSeconds);
 
+function start() {
   let idInterval = setInterval(() => {
     // * logic cap nhat giao dien
-  }, 1000);
-
-  if (Number(second.innerText) === 0 && Number(minute.innerText) === 0) {
-    clearInterval(idInterval);
-    alert("ket thuc");
-  }
+    if (totalSeconds === 0) {
+      setTimeout(() => {
+        clearInterval(idInterval);
+        alert("ket thuc");
+      }, 100);
+    }
+    let phut = Number.parseInt(totalSeconds / 60);
+    let giay = Number.parseInt(totalSeconds % 60);
+    minute.innerText = phut;
+    second.innerText = giay;
+    totalSeconds--;
+  }, 100);
 }
 
 btnStart.addEventListener("click", start);
