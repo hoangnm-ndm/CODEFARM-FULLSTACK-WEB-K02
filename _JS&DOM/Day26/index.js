@@ -1,9 +1,8 @@
 const url = "http://localhost:3000/products";
 
 const productsElement = document.getElementById("products");
-
-const titleEle = document.getElementById("title");
-const priceEle = document.getElementById("price");
+// const titleEle = document.getElementById("title");
+// const priceEle = document.getElementById("price");
 const formProduct = document.getElementById("product-form");
 
 fetch(url)
@@ -32,10 +31,23 @@ fetch(url)
 formProduct.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const title = titleEle.value;
-  const price = priceEle.value;
+  // * Cach 1:
+  //   const title = titleEle.value;
+  //   const price = priceEle.value;
 
-  console.log({ title, price });
-
+  // * Cach 2:
+  const formData = new FormData(formProduct);
+  const data = Object.fromEntries(formData);
   // * Gửi dữ liệu lên JSON-Server
+
+  fetch(url, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 });

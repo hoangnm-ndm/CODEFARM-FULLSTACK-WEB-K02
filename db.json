@@ -1,6 +1,44 @@
 {
   "products": [
-    { "id": 1, "title": "iphone X", "price": 3000 },
-    { "id": 2, "title": "iphone 11", "price": 2800 }
+    {
+      "id": 1,
+      "title": "iphone X",
+      "price": 3000
+    },
+    {
+      "id": 2,
+      "title": "iphone 11",
+      "price": 2800
+    },
+    {
+      "title": "them san pham AAAAA",
+      "price": "10000",
+      "id": 3
+    },
+    {
+      "title": "sdsdsdsds",
+      "price": "323232323",
+      "id": 4
+    },
+    {
+      "title": "sdsds",
+      "price": "232323",
+      "id": 5
+    },
+    {
+      "title": "ewewew",
+      "price": "232323",
+      "id": 6
+    },
+    {
+      "title": "sdsdsdsds",
+      "price": "232323",
+      "id": 7
+    },
+    {
+      "title": "sdsdsds",
+      "price": "22222",
+      "id": 8
+    }
   ]
 }
