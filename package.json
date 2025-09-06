@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "json-server": "^0.17.0"
-  }
+  },
+  "name": "codefarm-fullstack-web-k02",
+  "version": "1.0.0",
+  "description": "lop hoc k02",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "json-server --watch db.json --port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02.git"
+  },
+  "keywords": [
+    "nodejs",
+    "thayhoang",
+    "codefarm"
+  ],
+  "author": "hoangnm.ndm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02/issues"
+  },
+  "homepage": "https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02#readme"
 }

@@ -1,4 +1,4 @@
-fetch("http://localhost:3000/products")
+fetch("http://localhost:3000/products", {})
   .then((res) => {
     return res.json();
   })

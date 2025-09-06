@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+table,
+th,
+tr,
+td {
+  border: 1px solid blue;
+  border-collapse: collapse;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.btn-warn {
+  background-color: orange;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+}

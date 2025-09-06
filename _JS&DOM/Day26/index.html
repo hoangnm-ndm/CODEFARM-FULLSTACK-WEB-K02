@@ -3,9 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Day 26</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <script src="./ex01.js"></script>
+    <form id="product-form">
+      <div class="form-group">
+        <label for="">Title</label>
+        <input type="text" id="title" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="number" id="price" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn-primary">Submit</button>
+      </div>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>
+            <button onclick="" class="btn-primary">+ Add new</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="products"></tbody>
+    </table>
+    <script src="./index.js"></script>
   </body>
 </html>
