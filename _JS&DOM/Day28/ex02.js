@@ -1,30 +1,36 @@
-const promiseA = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("hoc xong");
-  }, 2000);
-});
+function A() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("hoc xong");
+    }, 2000);
+  });
+}
 
-const promiseB = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("tot nghiep");
-  }, 4000);
-});
+function B() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("tot nghiep");
+    }, 3000);
+  });
+}
 
-const promiseC = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("di lam");
-  }, 5000);
-});
+function C() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("di lam");
+    }, 4000);
+  });
+}
 
 console.time("Promise");
-promiseA
+A()
   .then((data) => {
     console.log(data);
-    return promiseB;
+    return B();
   })
   .then((data) => {
     console.log(data);
-    return promiseC;
+    return C();
   })
   .then((data) => {
     console.log(data);
