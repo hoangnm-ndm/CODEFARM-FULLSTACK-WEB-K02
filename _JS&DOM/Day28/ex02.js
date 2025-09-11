@@ -35,7 +35,12 @@ A()
   .then((data) => {
     console.log(data);
     console.timeEnd("Promise");
+  })
+  .catch((err) => {
+    console.log(err);
   });
+
+// * fetch("https://abc.com/products").then().then().catch()
 
 // * promise chain
 
@@ -53,3 +58,11 @@ A()
 //   .catch((err) => {
 //     console.log(err);
 //   });
+
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("hoc xong");
+  }, 2000);
+});
+
+console.log(myPromise);
