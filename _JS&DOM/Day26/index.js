@@ -29,13 +29,13 @@ fetch(url)
   });
 
 formProduct.addEventListener("submit", function (event) {
-  event.preventDefault();
+  event.preventDefault(); // Huỷ hành vi mặc định
 
   // * Cach 1:
   //   const title = titleEle.value;
   //   const price = priceEle.value;
 
-  // * Cach 2:
+  // * Cach 2: Suggest
   const formData = new FormData(formProduct);
   const data = Object.fromEntries(formData);
   // * Gửi dữ liệu lên JSON-Server
