@@ -21,7 +21,7 @@ Promise.race([myFetch1, myFetch2, myFetch3])
 /**
  * * Promise.race
  * * - Nhận vào 1 array các promise.
- * *- Thực hiện toàn bộ các promise này đồng thời (không cần tuần tự)
+ * * - Thực hiện toàn bộ các promise này đồng thời (không cần tuần tự)
  * * - Promise nào thực thi nhanh nhất sẽ được trả về kết quả trong then.
  * * - Nếu 1 trong số các promise bị rejected thì thực thi catch.
  *
