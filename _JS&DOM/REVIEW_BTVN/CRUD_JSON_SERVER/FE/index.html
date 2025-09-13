@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập về nhà task 12</title>
+  </head>
+  <body>
+    <form id="form-product">
+      <div>
+        <label>Tên sản phẩm</label>
+        <input
+          type="text"
+          placeholder="Nhập tên sản phẩm"
+          name="name"
+          id="name"
+        />
+      </div>
+      <div>
+        <label>Giá tiền</label>
+        <input
+          type="number"
+          placeholder="Nhập giá tiền"
+          name="price"
+          id="price"
+        />
+      </div>
+      <button id="btn-add" type="submit">Thêm mới</button>
+      <button id="btn-cancel" style="display: none">Huỷ bỏ</button>
+    </form>
+    <div id="products"></div>
+    <script src="./main.js"></script>
+  </body>
+</html>

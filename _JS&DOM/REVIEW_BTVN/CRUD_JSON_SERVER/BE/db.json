@@ -1,0 +1,19 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Iphone 11 Promax",
+      "price": 2000
+    },
+    {
+      "id": "2",
+      "name": "Iphone 11 Promax",
+      "price": 2000
+    },
+    {
+      "id": "d35b",
+      "name": "IPHONE 12 PROMAX ",
+      "price": "20000"
+    }
+  ]
+}
