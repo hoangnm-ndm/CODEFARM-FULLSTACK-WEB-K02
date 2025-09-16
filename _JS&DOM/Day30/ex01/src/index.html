@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ hàng</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .cart-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  </style>
+  <body>
+    <!-- Danh sách sản phẩm -->
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 15;
+        align-items: center;
+      "
+    >
+      <h1>Danh sách Sản phẩm</h1>
+      <div class="product-grid container" id="list-products">
+        <!-- Danh sách sản phẩm sẽ được thêm động -->
+      </div>
+    </div>
+
+    <!-- Giỏ hàng -->
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 15;
+        align-items: center;
+      "
+      class="cart-list"
+    >
+      <h1>Giỏ hàng</h1>
+      <div class="cart-list" id="list-cart">
+        <!-- Giỏ hàng trống ban đầu -->
+      </div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
