@@ -1,4 +1,5 @@
 import StudentList from "./StudentList";
+import TableList from "./TableList";
 
 // * props = properties
 /**
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <>
       <StudentList />
+      <TableList />
     </>
   );
 };
