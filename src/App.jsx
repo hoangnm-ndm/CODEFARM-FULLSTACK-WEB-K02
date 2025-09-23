@@ -1,7 +1,4 @@
-import React from "react";
-import Footer from "./Footer";
-import ProductList from "./ProductList";
-import Header from "./Header";
+import StudentList from "./StudentList";
 
 // * props = properties
 /**
@@ -11,22 +8,10 @@ import Header from "./Header";
  * * props là cách để truyền dữ liệu từ component cha sang component con.
  */
 
-const ComponentA = ({ name, email }) => {
-  console.log(name, email);
-  return <></>;
-};
-
 const App = () => {
-  const products = [
-    { id: 1, name: "iphone 17", price: 2000 },
-    { id: 2, name: "ipad 10", price: 200 },
-  ];
-
   return (
     <>
-      <Header />
-      <ProductList products={products} />
-      <Footer />
+      <StudentList />
     </>
   );
 };
