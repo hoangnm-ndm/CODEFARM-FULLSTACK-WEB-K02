@@ -4,54 +4,85 @@ import { products } from "../data";
 // * const [state, setState] = useState(0) -> Sai: Khong duoc viet hook ngoai component.
 
 const App = () => {
-  const [cart, setCart] = useState([]);
+  const cartLocalStorage = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : {};
+  const [cart, setCart] = useState({
+    cart: cartLocalStorage.cart || [],
+    totalCost: cartLocalStorage.totalCost || 0,
+    count: cartLocalStorage.count || 0,
+  });
 
-  // [
-  //   { id: 1, name: "product A", price: 200, quantity: 1 },
-  //   { id: 2, name: "product B", price: 300, quantity: 3 },
-  // ];
-
+  function saveCart(cart) {
+    const payload = {
+      cart: cart,
+      totalCost: cart.reduce((acc, cur) => {
+        acc += cur.price * cur.quantity;
+        return acc;
+      }, 0),
+      count: cart.reduce((acc, cur) => {
+        acc += cur.quantity;
+        return acc;
+      }, 0),
+    };
+    setCart(payload);
+    localStorage.setItem("cart", JSON.stringify(payload));
+  }
   function handleAddToCart(product) {
-    console.log(product);
-    // * tang so luong san pham trong gio hang
-    // let checkProduct = cart.find((item) => item.id === product.id);
-
-    // if (checkProduct) {
-    //   // Neu da co san pham trong gio hang.
-    //   // Tang quantity len
-    //   const newCart = cart.map((item) =>
-    //     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-    //   );
-    //   setCart(newCart);
-    //   localStorage.setItem("cart", JSON.stringify(newCart));
-    // } else {
-    //   // Chua co san pham nay trong gio hang
-    //   const newCart = [...cart, { ...product, quantity: 1 }];
-    //   setCart(newCart);
-    //   localStorage.setItem("cart", JSON.stringify(newCart));
-    // }
-
-    const newCart = cart.find((item) => item.id === product.id)
-      ? cart.map((item) =>
+    const newCart = cart.cart.find((item) => item.id === product.id)
+      ? cart.cart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         )
-      : [...cart, { ...product, quantity: 1 }];
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-    let totalCost = newCart.reduce((acc, cur) => {
-      return (acc += cur.price);
-    }, 0);
+      : [...cart.cart, { ...product, quantity: 1 }];
+
+    saveCart(newCart);
     // * Tinh lai tong so luong va tong tien
   }
+
+  const handleUpdateQuantity = (id, quantity) => {
+    if (quantity < 1) return;
+    const newCart = cart.cart.find((item) => item.id === id)
+      ? cart.cart.map((item) =>
+          item.id === id ? { ...item, quantity: quantity } : item
+        )
+      : cart.cart;
+    saveCart(newCart);
+  };
+
   return (
     <>
+      {/* {!![].length || <>hihi</>} */}
       <header>
         <p>
-          Gio hang: {} - Tong tien: {}{" "}
+          Gio hang: {cart.count} - Tong tien: {cart.totalCost}
         </p>
       </header>
+      <h2>gio hang</h2>
+      <div>
+        {cart.cart.map((item) => (
+          <div key={item.id}>
+            <h2>{item.name}</h2>
+            <p>{item.price}</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <button
+                onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+              >
+                -
+              </button>
+              <p>{item.quantity}</p>
+              <button
+                onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+              >
+                +
+              </button>
+            </div>
+            <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+          </div>
+        ))}
+      </div>
+      <h2>san pham</h2>
       {products.map((item) => (
         <div key={item.id}>
           <h2>{item.name}</h2>
