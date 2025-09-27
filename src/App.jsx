@@ -14,25 +14,43 @@ const App = () => {
   function handleAddToCart(product) {
     console.log(product);
     // * tang so luong san pham trong gio hang
-    let checkProduct = cart.find((item) => item.id === product.id);
+    // let checkProduct = cart.find((item) => item.id === product.id);
 
-    if (checkProduct) {
-      // Neu da co san pham trong gio hang.
-      // Tang quantity len
-    } else {
-      // Chua co san pham nay trong gio hang
-      const newCart = [...cart, { ...product, quantity: 1 }];
-      setCart(newCart);
-      localStorage.setItem("cart", JSON.stringify(newCart));
-    }
+    // if (checkProduct) {
+    //   // Neu da co san pham trong gio hang.
+    //   // Tang quantity len
+    //   const newCart = cart.map((item) =>
+    //     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+    //   );
+    //   setCart(newCart);
+    //   localStorage.setItem("cart", JSON.stringify(newCart));
+    // } else {
+    //   // Chua co san pham nay trong gio hang
+    //   const newCart = [...cart, { ...product, quantity: 1 }];
+    //   setCart(newCart);
+    //   localStorage.setItem("cart", JSON.stringify(newCart));
+    // }
 
-    // * dua cart vao trong localStorage
+    const newCart = cart.find((item) => item.id === product.id)
+      ? cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      : [...cart, { ...product, quantity: 1 }];
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    let totalCost = newCart.reduce((acc, cur) => {
+      return (acc += cur.price);
+    }, 0);
     // * Tinh lai tong so luong va tong tien
   }
   return (
     <>
       <header>
-        <p>Gio hang: {cart.length} - Tong tien: </p>
+        <p>
+          Gio hang: {} - Tong tien: {}{" "}
+        </p>
       </header>
       {products.map((item) => (
         <div key={item.id}>
