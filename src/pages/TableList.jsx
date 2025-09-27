@@ -1,4 +1,4 @@
-import { students } from "../data";
+import { students } from "../../data";
 
 const TableList = () => {
   const totalFail = students.filter((item) => item.score < 5).length;

@@ -1,5 +1,5 @@
 import React from "react";
-import { students } from "../data";
+import { students } from "../../data";
 
 const StudentList = () => {
   console.log(students);

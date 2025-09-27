@@ -1,30 +1,36 @@
-import StudentList from "./StudentList";
-import TableList from "./TableList";
+import { useState } from "react";
 
-// * props = properties
-/**
- *
- * * Mỗi một component chỉ có 1 props duy nhất là object gom toàn bộ các properties lại.
- * * Nếu có nhiều thuộc tính - có thể dùng cú pháp destructuring.
- * * props là cách để truyền dữ liệu từ component cha sang component con.
- */
+// * hooks -> móc
 
 const App = () => {
+  // console.log(document.title);
+  // document.title = 0;
+
+  // let count = 0;
+
+  const [count, setCount] = useState(0);
+
+  console.log(count);
+  function increment() {
+    setCount((count) => count + 1); // Cach 1
+    setCount(count + 1); // Cach 2
+    // setCount(count++); // Cach 3: Sai -> Không nên trực tiếp thay đổi value của state
+    console.log(count);
+  }
   return (
     <>
-      <StudentList />
-      <TableList />
+      <h1>Hello</h1>
+      <button onClick={() => (document.title = 100)}>Click Me</button>
+      <button onClick={increment}>Increment</button>
+      <p style={{ color: "red", fontSize: "30px" }}>{count}</p>
     </>
   );
 };
 
 export default App;
 
+//*  Các props luôn được viết theo camelCase, value được truyền thông qua {}
+
 /**
- * * Component
- * * - Đặt tên theo PascalCase
- * * - Sử dụng props thay cho cách truyền parameter thông thường.
- * * - Component trả về JSX
- * * - Component là một thành phần tham gia xây dựng giao diện cho ứng dụng, được tạo ra để tuỳ chỉnh, tái sử dụng và cập nhật khi cần thiết.
- * * - React không re-render (cập nhật lại giao diện) khi state thay đổi (vì react không quản lý function) - react chỉ re-render component khi có sự thay đổi -> Vì vậy, luôn dùng cú pháp component để xây dựng giao diện.
+ *
  */
