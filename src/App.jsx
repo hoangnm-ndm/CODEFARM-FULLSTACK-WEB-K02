@@ -35,29 +35,83 @@ const App = () => {
 
   const handlePagination = (page) => {
     // thay đổi lại state query, giải lại các query cũ và cập nhật lại key page = với page mình truyền đi
-    setQuery((prev) => ({ ...prev, page: page }));
+    setQuery((prev) => ({ ...prev, _page: page }));
   };
-  console.log(query);
   return (
     <div>
-      <div>
-        <input
-          type="text"
-          onChange={(e) => setSearchValue(e.target.value)}
-          onKeyDown={(e) => {
-            console.log(e);
-            if (e.key === "Enter") {
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div>
+          <input
+            type="text"
+            onChange={(e) => setSearchValue(e.target.value)}
+            onKeyDown={(e) => {
+              console.log(e);
+              if (e.key === "Enter") {
+                setQuery((prev) => ({ ...prev, q: searchValue }));
+              }
+            }}
+          />
+          <button
+            onClick={() => {
               setQuery((prev) => ({ ...prev, q: searchValue }));
-            }
-          }}
-        />
-        <button
-          onClick={() => {
-            setQuery((prev) => ({ ...prev, q: searchValue }));
-          }}
-        >
-          Tim kiem
-        </button>
+            }}
+          >
+            Tim kiem
+          </button>
+        </div>
+        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <div className="range-input" style={{ display: "flex", gap: 15 }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label htmlFor="">Từ</label>
+              <input
+                type="number"
+                defaultValue={0}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) return;
+                  setQuery((prev) => ({
+                    ...prev,
+                    price_gte: e.target.value || 0,
+                  }));
+                }}
+              />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <label htmlFor="">Đến</label>
+              <input
+                type="number"
+                defaultValue={100000}
+                onChange={(e) => {
+                  if (isNaN(e.target.value)) return;
+                  setQuery((prev) => ({
+                    ...prev,
+                    price_lte: e.target.value || 100000,
+                  }));
+                }}
+              />
+            </div>
+          </div>
+          <div>
+            <select
+              name=""
+              id=""
+              onChange={(e) => {
+                if (!e.target.value) {
+                  setQuery((prev) => ({ ...prev, _sort: null, _order: null }));
+                  return;
+                }
+                setQuery((prev) => ({
+                  ...prev,
+                  _sort: "price",
+                  _order: e.target.value,
+                }));
+              }}
+            >
+              <option value="">Mặc định</option>
+              <option value="desc">Từ cao đến thấp</option>
+              <option value="asc">Từ thấp đến cao</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)" }}>
         {products && products.length > 0 ? (
