@@ -11,13 +11,15 @@ Cụ thể như sau:
 ## Cách dùng 1
 
 - deps là mảng rỗng: callback được gọi 1 lần duy nhất sau khi component được mount.
+- fetch API, Cập nhật giao diện với data call API.
 
 ## Cách dùng 2
 
 - deps là mảng chứa giá trị: callback được gọi 1 lần sau khi component được mount và được gọi lại mỗi khi có 1 trong số các deps thay đổi.
+- Áp dụng các bộ lọc như tìm kiếm, sắp xếp, phân trang, .v.v
 
 ## Cách dùng 3
 
-clean up => chua day
+- Clean up
 
 > Lưu ý: không bao giờ được quên deps -> Nếu quên thì kết quả giống như không dùng useEffect.
