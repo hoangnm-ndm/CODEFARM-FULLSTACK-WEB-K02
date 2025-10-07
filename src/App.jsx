@@ -19,6 +19,9 @@ const App = () => {
   }, [searchValue, currentPage]);
 
   // Phân trang dữ liệu và chọn được limit xây dựng tìm kiếm
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+  };
   return (
     <>
       <div>
@@ -31,7 +34,6 @@ const App = () => {
             }
           }}
         />
-        <button>Tim kiem</button>
       </div>
       <h1>Learning useEffect</h1>
       <div id="productList">
@@ -55,9 +57,18 @@ const App = () => {
             gap: 5,
           }}
         >
+          <button
+            onClick={() => {
+              if (currentPage === 1) return;
+              handleNavigate(currentPage - 1);
+            }}
+            disabled={currentPage === 1}
+          >
+            prev
+          </button>
           {Array.from({ length: metaData.totalPages }).map((_, index) => (
             <button
-              onClick={() => setCurrentPage(index + 1)}
+              onClick={() => handleNavigate(index + 1)}
               style={{
                 background: `${index + 1 === currentPage ? "pink" : ""}`,
               }}
@@ -66,6 +77,15 @@ const App = () => {
               {index + 1}
             </button>
           ))}
+          <button
+            onClick={() => {
+              if (currentPage === metaData.totalPages) return;
+              handleNavigate(currentPage + 1);
+            }}
+            disabled={currentPage === metaData.totalPages}
+          >
+            next
+          </button>
         </div>
       )}
     </>
