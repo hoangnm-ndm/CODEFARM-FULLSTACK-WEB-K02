@@ -12,7 +12,7 @@ const App = () => {
       <h1>Hello</h1>
       <button onClick={handleShowComponent}>{show ? "ẩn" : "hiện"}</button>
       {/* {show && <ComponentA />} */}
-      <CheckingWindowSize />
+      {show && <CheckingWindowSize />}
     </>
   );
 };

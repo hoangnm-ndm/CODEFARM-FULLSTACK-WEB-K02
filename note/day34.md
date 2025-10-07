@@ -20,6 +20,9 @@ Cụ thể như sau:
 
 ## Cách dùng 3
 
-- Clean up
+- Callback của useEffect return ra một function.
+- function này sẽ được gọi ngay khi component unmount
+- Vì lý do này, các logic liên quan đến dọn dẹp thường sử dụng trong return của callback khi dùng useEffect.
+- Ví dụ: removeEventListener, unSubscribe, ngừng fetch API khi không chờ kết quả, làm việc với timer, .v.v
 
 > Lưu ý: không bao giờ được quên deps -> Nếu quên thì kết quả giống như không dùng useEffect.
