@@ -93,7 +93,7 @@ const App = () => {
           <div>
             <select
               name=""
-              id=""
+              id="" 
               onChange={(e) => {
                 if (!e.target.value) {
                   setQuery((prev) => ({ ...prev, _sort: null, _order: null }));
