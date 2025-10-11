@@ -1,7 +1,6 @@
 import React from "react";
 
-const Footer = () => {
-  return <div>Footer</div>;
-};
-
+function Footer() {
+  return <footer>Copyright by CodeFarm - 2025</footer>;
+}
 export default Footer;
