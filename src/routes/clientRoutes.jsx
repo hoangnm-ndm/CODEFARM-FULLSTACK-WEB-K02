@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import LayoutClient from "../layouts/LayoutClient";
 import AboutPage from "../pages/client/AboutPage";
 import ContactPage from "../pages/client/ContactPage";
@@ -10,7 +11,7 @@ const clientRoutes = [
     path: "/",
     Component: LayoutClient,
     children: [
-      { index: true, Component: HomePage },
+      { index: true, element: <Navigate to={"/shop"} /> },
       { path: "shop", Component: ShopPage },
       // Dynamic route
       { path: "shop/:id", Component: ProductDetailPage },
