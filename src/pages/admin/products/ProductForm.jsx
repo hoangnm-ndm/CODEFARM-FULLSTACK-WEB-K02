@@ -5,6 +5,7 @@ import {
   getProductDetail,
   updateProduct,
 } from "../../../api/apiProduct";
+import ChildComponent from "./ChildComponent";
 
 // * Không sử dụng react-hook-form hay bất cứ thư viện form nào -> xây dựng form add products chỉ với các hook đã học.
 const validateFields = (data) => {
@@ -72,6 +73,7 @@ const ProductForm = () => {
   }, [id]);
   return (
     <div>
+      <ChildComponent />
       <form onSubmit={handleSubmit}>
         <h1>{id ? "Cập nhật sản phẩm" : "Tạo mới sản phẩm"}</h1>
         <div className="form-group">
