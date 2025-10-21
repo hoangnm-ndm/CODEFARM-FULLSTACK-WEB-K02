@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { createProduct } from "../../../api/apiProduct";
 import { toast } from "react-toastify";
+import { createProduct } from "../../../api/apiProduct";
+import { productSchema } from "../../../schemas/productSchema";
 
 /**
  * 1. Quản lý các trạng thái data form dễ dàng hơn.
@@ -11,16 +11,6 @@ import { toast } from "react-toastify";
  * 3. Dễ dàng thao tác form (reset, refresh, watch, register...)
  * 4. Cấu hình nhẹ
  */
-
-const productSchema = z.object({
-  title: z
-    .string({ message: "Title phai la string" })
-    .min(6, { message: "Title toi thieu 6 ky tu" }),
-  price: z
-    .number({ message: "Price la bat buoc va phai la so" })
-    .min(0, { message: "Price la 1 so khong am" }),
-  description: z.string().optional(),
-});
 
 const ProductFormRHF = () => {
   const {
@@ -33,6 +23,7 @@ const ProductFormRHF = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(typeof data.date);
       setLoading(true);
       const product = await createProduct(data);
       console.log(product);
@@ -64,6 +55,10 @@ const ProductFormRHF = () => {
           {errors.title && (
             <span className="text-danger">{errors.title.message}</span>
           )}
+        </div>
+
+        <div className="mb-3">
+          <input type="date" {...register("date", { valueAsDate: true })} />
         </div>
 
         <div className="mb-3">
