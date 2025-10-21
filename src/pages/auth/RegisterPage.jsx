@@ -31,7 +31,7 @@ const RegisterPage = () => {
   };
 
   const handleCheck = (event) => {
-    setDisabled(event.target.checked);
+    setDisabled(!event.target.checked);
   };
   return (
     <div>

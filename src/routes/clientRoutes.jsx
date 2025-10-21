@@ -4,6 +4,7 @@ import AboutPage from "../pages/client/AboutPage";
 import ContactPage from "../pages/client/ContactPage";
 import ProductDetailPage from "../pages/client/ProductDetailPage";
 import ShopPage from "../pages/client/ShopPage";
+import StylePage from "../pages/client/Style";
 
 const clientRoutes = [
   {
@@ -12,6 +13,7 @@ const clientRoutes = [
     children: [
       { index: true, element: <Navigate to={"/shop"} /> },
       { path: "shop", Component: ShopPage },
+      { path: "/style", Component: StylePage },
       // Dynamic route
       { path: "shop/:id", Component: ProductDetailPage },
       { path: "about", Component: AboutPage },
