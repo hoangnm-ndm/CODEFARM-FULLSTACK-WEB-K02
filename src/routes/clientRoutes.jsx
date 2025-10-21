@@ -2,14 +2,13 @@ import { Navigate } from "react-router-dom";
 import LayoutClient from "../layouts/LayoutClient";
 import AboutPage from "../pages/client/AboutPage";
 import ContactPage from "../pages/client/ContactPage";
-import HomePage from "../pages/client/HomePage";
 import ProductDetailPage from "../pages/client/ProductDetailPage";
 import ShopPage from "../pages/client/ShopPage";
 
 const clientRoutes = [
   {
     path: "/",
-    Component: LayoutClient,
+    element: <LayoutClient />,
     children: [
       { index: true, element: <Navigate to={"/shop"} /> },
       { path: "shop", Component: ShopPage },

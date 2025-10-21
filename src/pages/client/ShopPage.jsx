@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -6,8 +7,13 @@ const ShopPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `https://api-class-o1lo.onrender.com/api/example/products`
+        const response = await axios.get(
+          `https://api-class-o1lo.onrender.com/api/example/products`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
         );
         const { data } = await response.json();
         setProducts(data);

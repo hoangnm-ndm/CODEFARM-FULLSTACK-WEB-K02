@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import { registerSchema } from "../../schemas/authSchema";
 import { registerAuth } from "../../api/apiAuth";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const {
     register,
     formState: { errors },
@@ -15,16 +15,23 @@ const RegisterPage = () => {
   } = useForm({
     resolver: zodResolver(registerSchema),
   });
+  const nav = useNavigate();
   const onSubmit = async (data) => {
-    setDisabled(true);
-    data.confirmPassword = undefined;
-    await registerAuth(data);
-    toast.success("dang ky thanh cong!");
-    setDisabled(false);
+    try {
+      setDisabled(true);
+      data.confirmPassword = undefined;
+      await registerAuth(data);
+      toast.success("dang ky thanh cong!");
+      setDisabled(false);
+      nav("/auth/login");
+    } catch (error) {
+      setDisabled(false);
+      toast.error(error.response.data.message);
+    }
   };
 
   const handleCheck = (event) => {
-    console.log(event.target);
+    setDisabled(event.target.checked);
   };
   return (
     <div>
