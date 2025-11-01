@@ -1,8 +1,0 @@
-{
-  "liveServer.settings.ignoreFiles": [
-    "**/*.log",
-    "node_modules/**",
-    "dist/**",
-    "db.json"
-  ]
-}
