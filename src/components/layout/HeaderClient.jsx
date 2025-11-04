@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
-import st from "./HeaderClient.module.css";
+import style from "./HeaderClient.module.css";
 
 const HeaderClient = () => {
   return (
     <header>
-      <ul className={st.nav}>
-        <li>
+      <ul className={style.nav}>
+        <li className={style.item}>
           <Link to="/">Home</Link>
         </li>
 
-        <li>
+        <li className={style.item}>
           <Link to="/register">Register</Link>
         </li>
 
-        <li>
+        <li className={style.item}>
           <Link to="/login">Login</Link>
         </li>
 
-        <li>
+        <li className={style.item}>
           <Link to="/admin">Trang quản trị</Link>
         </li>
       </ul>

@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/css": "^11.13.5",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.2",
+    "antd": "^5.28.0",
     "axios": "^1.13.1",
     "concurrently": "^9.2.1",
     "json-server": "^0.17.0",
