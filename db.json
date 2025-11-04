@@ -18,6 +18,13 @@
       "password": "$2a$10$28JEj1.Ae50TQOIgc0PpT.NidUMM2LxCr4CqpSrxbTK.9pOUWEkGW",
       "username": "111111",
       "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$YAlcRSils25DWqpu0Yd/5.Bafap3GoZcVXLe9.JEw/XQWlsSs53ca",
+      "username": "admin",
+      "id": 4,
+      "role": "admin"
     }
   ]
 }

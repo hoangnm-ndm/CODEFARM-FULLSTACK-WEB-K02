@@ -2,15 +2,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import api from "../api";
+import api from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
   email: z.string().email(),
+  username: z.string(),
   password: z.string().min(6),
 });
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const {
     register,
     formState: { errors },
@@ -24,11 +25,8 @@ const LoginPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await api.post("/login", data);
-      console.log(res);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      localStorage.setItem("accessToken", JSON.stringify(res.data.accessToken));
-      nav("/");
+      await api.post("/register", data);
+      nav("/login");
     } catch (err) {
       console.log(err);
       alert(err.response.data);
@@ -54,6 +52,21 @@ const LoginPage = () => {
 
       <div className="mb-3">
         <label htmlFor="" className="form-label">
+          username
+        </label>
+        <input
+          type="text"
+          placeholder="username"
+          {...register("username", { required: true })}
+          className="form-control"
+        />
+        {errors.username && (
+          <span className="text-danger">{errors.username.message}</span>
+        )}
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="" className="form-label">
           password
         </label>
         <input
@@ -74,4 +87,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
