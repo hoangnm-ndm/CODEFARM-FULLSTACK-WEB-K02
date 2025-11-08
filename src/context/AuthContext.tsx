@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({ email: "" });
 
 export const AuthContextProvider = ({ children }: any) => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
