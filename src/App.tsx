@@ -1,32 +1,11 @@
-import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
-type Product = {
-  title: string;
-  price: number;
-  description: string;
-  id?: string;
-};
-
+import AppRoute from "./routes";
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  async function fetchProduct() {
-    const res = await fetch("https://dummyjson.com/products");
-    const data = await res.json();
-    return data.products;
-  }
-
-  useEffect(() => {
-    (async () => {
-      const data = await fetchProduct();
-      console.log(data);
-      setProducts(data);
-    })();
-  }, []);
   return (
     <>
-      <h1>Hello TypeScript</h1>
-      <p>{JSON.stringify(products)}</p>
+      <AppRoute />
+      <ToastContainer />
     </>
   );
 }
