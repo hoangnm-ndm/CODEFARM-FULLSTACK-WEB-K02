@@ -4,7 +4,7 @@ import type { Product } from "../types/Product";
 const url = "http://localhost:3000/products";
 
 type Action = {
-  type: "GET" | "INCRE" | "DECRE";
+  type: "GET" | "INCRE" | "DECRE" | "CLEAR";
   payload: Product[];
 };
 
@@ -22,6 +22,9 @@ const productReducer = (state: State, action: Action) => {
     case "DECRE":
       return state;
 
+    case "CLEAR":
+      return { products: [] };
+
     default:
       return state;
   }
@@ -36,7 +39,6 @@ const ManagementProductPage = () => {
     const fetchProducts = async () => {
       const { data } = await axios.get(url);
       // setProducts(data);
-      console.log(data);
       dispatch({ type: "GET", payload: data });
     };
     fetchProducts();
