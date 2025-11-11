@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
+import CartPopup from "./CartPopup";
 
 const Header = () => {
   const { cart } = useCart();
@@ -18,10 +19,10 @@ const Header = () => {
           <li>
             <Link to={"/about"}>About</Link>
           </li>
-          <li>
+          <li className="cart-icon">
             <Link to={"/"}>
               <i className="fa-solid fa-cart-plus"></i>
-              {/* <span>{quantity}</span> */}
+              <CartPopup />
             </Link>
           </li>
         </ul>

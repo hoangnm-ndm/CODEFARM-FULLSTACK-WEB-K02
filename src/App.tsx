@@ -1,14 +1,16 @@
 import "./App.css";
-import CartPopup from "./components/CartPopup";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
+import ManagementProductPage from "./pages/ManagementProductPage";
+import Reducer from "./Reducer";
 
 function App() {
   return (
     <>
-      <Header />
-      <CartPopup />
-      <HomePage />
+      {/* <Header /> */}
+      {/* <Reducer /> */}
+      <ManagementProductPage />
+      {/* <HomePage /> */}
     </>
   );
 }
