@@ -13,14 +13,8 @@ type State = { products: Product[] };
 const productReducer = (state: State, action: Action) => {
   switch (action.type) {
     case "GET":
-      state.products = action.payload;
-      return state;
-
-    case "INCRE":
-      return state;
-
-    case "DECRE":
-      return state;
+      const newState = { ...state, products: action.payload };
+      return newState;
 
     case "CLEAR":
       return { products: [] };
