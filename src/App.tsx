@@ -1,11 +1,12 @@
-import { ToastContainer } from "react-toastify";
 import "./App.css";
-import AppRoute from "./routes";
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+
 function App() {
   return (
     <>
-      <AppRoute />
-      <ToastContainer />
+      <Header />
+      <HomePage />
     </>
   );
 }

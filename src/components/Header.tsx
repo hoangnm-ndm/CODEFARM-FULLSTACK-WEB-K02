@@ -1,33 +1,32 @@
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
-import type { User } from "../types/User";
+import { useCart } from "../contexts/CartContext";
 
 const Header = () => {
-  const user = useContext(AuthContext);
+  const { cart } = useCart();
+  console.log(cart);
+
   return (
-    <header>
+    <div>
       <nav>
         <ul>
           <li>
-            <Link to="">Home</Link>
+            <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <Link to="">About</Link>
+            <Link to={"/shop"}>Shop</Link>
           </li>
           <li>
-            <Link to="">Shop</Link>
+            <Link to={"/about"}>About</Link>
           </li>
           <li>
-            {user.email ? (
-              <p>Xin chao {user.email}</p>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
+            <Link to={"/"}>
+              <i className="fa-solid fa-cart-plus"></i>
+              {/* <span>{quantity}</span> */}
+            </Link>
           </li>
         </ul>
       </nav>
-    </header>
+    </div>
   );
 };
 
