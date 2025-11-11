@@ -1,6 +1,7 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -22,14 +23,36 @@ export const useCart = () => {
   return context;
 };
 
-export const CartContextProvider = ({ children }: { children: ReactNode }) => {
+export const CartContextProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [cart, setCart] = useState<CartItem[]>(
     JSON.parse(localStorage.getItem("cart") || "[]")
   );
   const addToCart = (product: Product) => {
-    console.log(product);
+    // * nếu có sản phẩm thì cập nhật quantity lên 1.
+    // * nếu chưa có thì thêm product vào với quantity = 1
+    const newCart = () => {
+      const existProduct = cart.find((item) => item.id === product.id);
+      if (existProduct) {
+        const newCart = cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+        return newCart;
+      }
+      return [...cart, { ...product, quantity: 1 }];
+    };
+    setCart(newCart);
   };
-  const removeFromCart = (id: number) => {};
+  const removeFromCart = (id: number) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
