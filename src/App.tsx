@@ -2,30 +2,21 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { getProducts } from "./features/productSlice";
-import ComponentA from "./pages/ComponentA";
 import { AppDispatch, RootState } from "./store";
+import { getProductsAPI } from "./apis/productApi";
 
 function App() {
-  // const { state, getProducts } = useProductContext();
-
   const { products } = useSelector((state: RootState) => state.product);
-
   const dispatch = useDispatch<AppDispatch>();
-
   useEffect(() => {
-    // getProducts();
-    // fetch API thay cho data fake
-    const payload = [
-      { id: 1, title: "Product 1", price: 100, description: "mo ta" },
-    ];
-
-    dispatch(getProducts(payload));
+    (async () => {
+      dispatch(getProducts(await getProductsAPI()));
+    })();
   }, []);
 
   return (
     <>
       <h1>Hello</h1>
-      <ComponentA />
       <table>
         <thead>
           <tr>
