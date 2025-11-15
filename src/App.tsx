@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import "./App.css";
 import { useProductContext } from "./contexts/productContext";
+import ComponentA from "./pages/ComponentA";
 
 function App() {
   const { state, getProducts } = useProductContext();
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <h1>Hello</h1>
+      <ComponentA />
       <table>
         <thead>
           <tr>
