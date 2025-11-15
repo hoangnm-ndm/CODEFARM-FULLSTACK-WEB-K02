@@ -1,25 +1,27 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
-import { ProductContext, ProductContextType } from "./contexts/productContext";
-import axios from "axios";
+import { useProductContext } from "./contexts/productContext";
 
 function App() {
-  const { state, dispatch } = useContext<ProductContextType>(ProductContext);
-
-  const fetchProducts = async () => {
-    const { data } = await axios.get("https://dummyjson.com/products");
-    console.log(data);
-    dispatch({ type: "GET_PRODUCTS", payload: data });
-  };
+  const { state, getProducts } = useProductContext();
 
   useEffect(() => {
-    fetchProducts();
+    getProducts();
   }, []);
 
   return (
     <>
       <h1>Hello</h1>
-      {JSON.stringify(state.products)}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      </table>
     </>
   );
 }
