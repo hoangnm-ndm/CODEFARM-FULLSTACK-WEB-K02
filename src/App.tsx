@@ -21,6 +21,19 @@ function App() {
             <th>Action</th>
           </tr>
         </thead>
+        <tbody>
+          {state.products.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.title}</td>
+              <td>{product.price}</td>
+              <td>
+                <button>Delete</button>
+                <button>Update</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </>
   );
