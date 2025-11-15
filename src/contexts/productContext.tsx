@@ -1,18 +1,18 @@
 import { createContext, ReactNode, useContext, useReducer } from "react";
 import api from "../apis";
-import { Products } from "../types/Product";
+import { Product } from "../types/Product";
 import { productReducer } from "./productReducer";
 
 export type ProductContextType = {
-  state: { products: Products[] };
+  state: { products: Product[] };
   getProducts: () => void;
   removeProduct: (id: string) => void;
-  addProduct: (product: Products) => void;
-  updateProduct: (product: Products) => void;
+  addProduct: (product: Product) => void;
+  updateProduct: (product: Product) => void;
 };
 
 export const initialState = {
-  products: [] as Products[],
+  products: [] as Product[],
 };
 
 const ProductContext = createContext<ProductContextType | null>(null);
@@ -44,12 +44,12 @@ export const ProductContextProvider = ({
     dispatch({ type: "REMOVE_PRODUCT", payload: id });
   };
 
-  const addProduct = async (product: Products) => {
+  const addProduct = async (product: Product) => {
     const { data } = await api.post("/products", product);
     dispatch({ type: "ADD_PRODUCT", payload: data });
   };
 
-  const updateProduct = async (product: Products) => {
+  const updateProduct = async (product: Product) => {
     const { data } = await api.patch(`/products/${product.id}`, product);
     dispatch({ type: "UPDATE_PRODUCT", payload: data });
   };

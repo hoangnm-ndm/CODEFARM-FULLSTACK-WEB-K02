@@ -1,13 +1,25 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { useProductContext } from "./contexts/productContext";
+import { getProducts } from "./features/productSlice";
 import ComponentA from "./pages/ComponentA";
+import { AppDispatch, RootState } from "./store";
 
 function App() {
-  const { state, getProducts } = useProductContext();
+  // const { state, getProducts } = useProductContext();
+
+  const { products } = useSelector((state: RootState) => state.product);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    getProducts();
+    // getProducts();
+    // fetch API thay cho data fake
+    const payload = [
+      { id: 1, title: "Product 1", price: 100, description: "mo ta" },
+    ];
+
+    dispatch(getProducts(payload));
   }, []);
 
   return (
@@ -24,7 +36,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {state.products.map((product) => (
+          {products.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>{product.title}</td>

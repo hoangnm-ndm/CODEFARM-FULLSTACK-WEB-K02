@@ -1,7 +1,7 @@
-import { Products } from "../types/Product";
+import { Product } from "../types/Product";
 
 export interface StateType {
-  products: Products[];
+  products: Product[];
   // ...
 }
 
