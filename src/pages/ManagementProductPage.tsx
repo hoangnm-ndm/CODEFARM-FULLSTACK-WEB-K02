@@ -22,7 +22,6 @@ const productReducer = (state: State, action: Action) => {
     default:
       return state;
   }
-
   // * newState
 };
 
