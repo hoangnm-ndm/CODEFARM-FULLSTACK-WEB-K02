@@ -1,13 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer from "../features/productSlice";
+import todoReducer from "./features/todo/todoSlice";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    product: productReducer,
+    todo: todoReducer,
+    // add more...
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
-export default store;

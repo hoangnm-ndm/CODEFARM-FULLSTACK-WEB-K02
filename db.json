@@ -1,7 +1,0 @@
-{
-  "products": [
-    { "id": 1, "title": "Laptop", "description": "mota", "price": 999.99 },
-    { "id": 2, "title": "Smartphone", "description": "mota", "price": 499.99 },
-    { "id": 3, "title": "Tablet", "description": "mota", "price": 299.99 }
-  ]
-}
