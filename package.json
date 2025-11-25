@@ -10,7 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@cloudinary/react": "^1.14.3",
+    "@cloudinary/url-gen": "^1.22.0",
+    "@tanstack/react-query": "^5.90.10",
+    "antd": "^6.0.0",
     "axios": "^1.13.2",
+    "cloudinary-core": "^2.14.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
