@@ -1,16 +1,17 @@
+import { QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.tsx";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./api/apiQuery.ts";
-import DemoUpload from "./DemoUpload.tsx";
+import App from "./App.tsx";
+import "./index.css";
+import ThemeControl from "./ThemeControl.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <App /> */}
-      <DemoUpload />
+      <ThemeControl>
+        <App />
+      </ThemeControl>
     </QueryClientProvider>
   </StrictMode>
 );

@@ -1,33 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import { Skeleton } from "antd";
-import api from "./api";
+import { Button } from "antd";
+import "antd/dist/reset.css";
 import "./App.css";
-import Test from "./Test";
-
-const fetchProducts = async () => {
-  const { data } = await api.get("/products");
-  return data.data;
-};
-
+import ModalUpload from "./ModalUpload";
 function App() {
-  const { isPending, error, data } = useQuery({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
-  });
-
-  if (isPending) return <Skeleton />;
-  if (error) return <p>Oops! Toang roi: {error.message}</p>;
-
   return (
     <>
-      <Test />
-      {data.map((item: any) => (
-        <div key={item._id}>
-          <h2>{item.title}</h2>
-          <p>{item.price}</p>
-          <p>{item.description}</p>
-        </div>
-      ))}
+      <ModalUpload title="Ảnh bìa">
+        <Button type="primary">Tải lên ảnh bìa</Button>
+      </ModalUpload>
+      <ModalUpload title="Ảnh đại diện">
+        <Button type="primary">Tải lên ảnh đại diện</Button>
+      </ModalUpload>
     </>
   );
 }
