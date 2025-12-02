@@ -1,46 +1,21 @@
-import { createServer } from "node:http";
+import express from "express";
 
-const hostname = "127.0.0.1";
-const port = 3000;
+const app = express();
 
-const products = [{ id: 1, name: "San pham A", price: 200 }];
+app.get("/", (req, res) => {
+  console.log("hello");
+  res.send("Hello");
+});
 
-const server = createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "application/json");
-  // res.end("Xin chao ca lop!");
+app.get("/products", (req, res) => {
+  res.end("danh sach san pham");
+});
 
-  const { url, method, query, body, params } = req;
-  if (url === "/products" && method === "GET") {
-    return res.end(JSON.stringify(products));
-  }
-
+app.get("/products/:id", (req, res) => {
   console.log(req);
-
-  console.log({ params });
-  console.log({ query });
-
-  // if (url === "/products" && method === "GET") {
-  //   return res.end(JSON.stringify(products));
-  // }
-
-  /**
-   * * Nếu ứng dụng của mình có hàng trăm nghiệp vụ thì hàng trăm lần if...else
-   */
-  return res.end("hello");
+  res.end("danh sach san pham");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server is running on http://${hostname}:${port}/`);
+app.listen(8888, () => {
+  console.log("Server is running on http://localhost:8888");
 });
-
-/**
- * * npm init -y
- * * npm i nodemon --save-dev
- * * trong package.json, sửa:
-  "scripts": {
-    "dev": "nodemon index.js"
-  },
- * * Thực hiện câu lệnh: npm run dev.
- * * Kiểm tra http://localhost:3000 
- */
