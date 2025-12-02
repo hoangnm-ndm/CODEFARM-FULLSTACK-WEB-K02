@@ -16,7 +16,9 @@ const ThemeControl = ({ children }: { children: ReactNode }) => {
     <ConfigProvider
       theme={{
         algorithm:
-          mode === "dark" ? theme.darkAlgorithm : theme.defaultAlgorithm,
+          mode === "dark"
+            ? [theme.darkAlgorithm, theme.compactAlgorithm]
+            : theme.defaultAlgorithm,
         token: {
           colorBgContainer: "#ffc0cb",
           colorPrimary: "#ffc0cb",
