@@ -1,0 +1,30 @@
+{
+  "name": "codefarm-fullstack-web-k02",
+  "version": "1.0.0",
+  "description": "nodejs project abc",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02.git"
+  },
+  "keywords": [
+    "nodejs",
+    "codefarm"
+  ],
+  "author": "hoangnm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02/issues"
+  },
+  "homepage": "https://github.com/hoangnm-ndm/CODEFARM-FULLSTACK-WEB-K02#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
