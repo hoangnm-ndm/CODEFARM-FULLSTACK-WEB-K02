@@ -1,20 +1,13 @@
 import express from "express";
+import router from "./src/routes/index.js";
+import connectDB from "./src/configs/connectDB.js";
 
 const app = express();
+app.use(express.json());
 
-app.get("/", (req, res) => {
-  console.log("hello");
-  res.send("Hello");
-});
+connectDB();
 
-app.get("/products", (req, res) => {
-  res.end("danh sach san pham");
-});
-
-app.get("/products/:id", (req, res) => {
-  console.log(req);
-  res.end("danh sach san pham");
-});
+app.use("/", router);
 
 app.listen(8888, () => {
   console.log("Server is running on http://localhost:8888");
