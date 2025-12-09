@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { DB_URI } from "./dotenvConfig.js";
 
 function connectDB() {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/k02")
+    .connect(DB_URI)
     .then(() => {
       console.log(`Connected database successfully!`);
     })
