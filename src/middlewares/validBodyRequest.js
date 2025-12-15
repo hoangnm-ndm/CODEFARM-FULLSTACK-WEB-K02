@@ -2,7 +2,9 @@ import z from "zod";
 
 const validBodyRequest = (schema) => async (req, res, next) => {
   try {
-    await schema.parse(req.body);
+    const data = await schema.parse(req.body);
+    console.log(data);
+    req.data;
     next();
   } catch (error) {
     const errors = error.issues.map((item) => `${item.path}: ${item.message}`);
