@@ -9,7 +9,14 @@ export const createProduct = handleAsync(async (req, res) => {
 });
 
 export const getProducts = handleAsync(async (req, res) => {
-  const data = await Product.find();
+  const data = await Product.find().populate("category");
+  if (data.length === 0) {
+    return createError(res, 400, "Not found");
+  }
+  createResponse(res, 200, "Successfully!", data);
+});
+export const getProduct = handleAsync(async (req, res) => {
+  const data = await Product.findById(req.params.id).populate("category");
   if (data.length === 0) {
     return createError(res, 400, "Not found");
   }

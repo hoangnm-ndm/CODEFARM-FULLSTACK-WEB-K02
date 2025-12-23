@@ -1,6 +1,7 @@
 import Router from "express";
 import {
   createProduct,
+  getProduct,
   getProducts,
   removeProduct,
   updateProduct,
@@ -16,7 +17,7 @@ import { checkAuth } from "../middlewares/checkAuth.js";
 const productRoutes = Router();
 
 productRoutes.get("/", getProducts);
-// productRoutes.get("/:id");
+productRoutes.get("/:id", getProduct);
 
 // * admin, superAdmin
 productRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
