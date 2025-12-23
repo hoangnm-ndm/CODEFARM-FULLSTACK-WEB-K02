@@ -29,7 +29,7 @@ export const removeProduct = handleAsync(async (req, res) => {
   if (!data) {
     return createError(res, 400, "Not found");
   }
-  return createResponse(res, 200, "Update successfully!", data);
+  return createResponse(res, 200, "Remove successfully!", data);
 });
 
 // * findByIdAndUpdate = PATCH
