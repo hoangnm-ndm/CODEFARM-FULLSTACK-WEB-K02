@@ -2,6 +2,7 @@ import Router from "express";
 import {
   createProduct,
   getProducts,
+  removeProduct,
   updateProduct,
 } from "../controllers/product.controller.js";
 import validBodyRequest from "../middlewares/validBodyRequest.js";
@@ -9,17 +10,22 @@ import {
   productCreateSchema,
   productUpdateSchema,
 } from "../schemas/product.schema.js";
+import { checkPermission } from "../middlewares/checkPermission.js";
+import { checkAuth } from "../middlewares/checkAuth.js";
 
 const productRoutes = Router();
 
-productRoutes.post("/", validBodyRequest(productCreateSchema), createProduct);
 productRoutes.get("/", getProducts);
 // productRoutes.get("/:id");
+
+// * admin, superAdmin
+productRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
+productRoutes.delete("/:id", removeProduct);
+productRoutes.post("/", validBodyRequest(productCreateSchema), createProduct);
 productRoutes.patch(
   "/:id",
   validBodyRequest(productUpdateSchema),
   updateProduct
 );
-// productRoutes.delete("/:id");
 
 export default productRoutes;

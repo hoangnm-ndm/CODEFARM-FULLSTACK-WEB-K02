@@ -39,7 +39,8 @@ export const signIn = handleAsync(async (req, res) => {
 
   const userExist = await User.findOne({ email });
 
-  if (!userExist) return createError(res, 400, "Nguoi dung khong ton tai!");
+  if (!userExist)
+    return createError(res, 400, "Email hoac password chua dung!");
 
   const isMatched = bcrypt.compareSync(password, userExist.password);
 
@@ -48,8 +49,11 @@ export const signIn = handleAsync(async (req, res) => {
 
   const accessToken = jwt.sign({ _id: userExist._id }, JWT_SECRET);
 
+  // * Cách 1: Chuyển JWT về client thông qua JSON.
   createResponse(res, 200, "Dang nhap thanh cong", {
     user: userExist,
     accessToken,
   });
+
+  // * Cách 2: chuyển JWT về qua cookies
 });

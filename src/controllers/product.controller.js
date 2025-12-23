@@ -23,5 +23,14 @@ export const updateProduct = handleAsync(async (req, res) => {
   createResponse(res, 200, "Update successfully!", data);
 });
 
+export const removeProduct = handleAsync(async (req, res) => {
+  const data = await Product.findByIdAndDelete(req.params.id);
+  console.log(data);
+  if (!data) {
+    return createError(res, 400, "Not found");
+  }
+  return createResponse(res, 200, "Update successfully!", data);
+});
+
 // * findByIdAndUpdate = PATCH
 // * findOneAndReplace = PUT
