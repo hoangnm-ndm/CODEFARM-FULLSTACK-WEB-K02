@@ -1,6 +1,7 @@
 import createError from "../../shared/utils/createError.js";
 import createResponse from "../../shared/utils/createResponse.js";
 import handleAsync from "../../shared/utils/handleAsync.js";
+import { queryBuilder } from "../../shared/utils/query-builder.js";
 import { addSlugUtils } from "../../shared/utils/slugUtils.js";
 import Category from "./category.model.js";
 
@@ -11,7 +12,7 @@ export const createCategory = handleAsync(async (req, res) => {
 });
 
 export const getCategories = handleAsync(async (req, res) => {
-  const data = await Category.find();
+  const data = await queryBuilder(Category, req.query);
   if (data.length === 0) {
     return createError(res, 400, "Not found");
   }

@@ -57,3 +57,11 @@ export const signIn = handleAsync(async (req, res) => {
 
   // * Cách 2: chuyển JWT về qua cookies
 });
+
+/**
+ * * Refresh Token
+ * * Đổi mật khẩu
+ * * Quên mật khẩu
+ * * Cập nhật thông tin người dùng
+ * * Get profile me
+ */
