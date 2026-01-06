@@ -1,6 +1,8 @@
+import { populate } from "dotenv";
 import createError from "../../shared/utils/createError.js";
 import createResponse from "../../shared/utils/createResponse.js";
 import handleAsync from "../../shared/utils/handleAsync.js";
+import { queryBuilder } from "../../shared/utils/query-builder.js";
 import Product from "./product.model.js";
 
 export const createProduct = handleAsync(async (req, res) => {
@@ -9,7 +11,10 @@ export const createProduct = handleAsync(async (req, res) => {
 });
 
 export const getProducts = handleAsync(async (req, res) => {
-  const data = await Product.find().populate("category");
+  const query = { ...req.query };
+  const data = await queryBuilder(Product, query, {
+    populate: [{ path: "category", select: "title" }],
+  });
   if (data.length === 0) {
     return createError(res, 400, "Not found");
   }
