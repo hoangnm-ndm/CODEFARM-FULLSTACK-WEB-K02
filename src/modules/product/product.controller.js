@@ -11,8 +11,7 @@ export const createProduct = handleAsync(async (req, res) => {
 });
 
 export const getProducts = handleAsync(async (req, res) => {
-  const query = { ...req.query };
-  const data = await queryBuilder(Product, query, {
+  const data = await queryBuilder(Product, req.query, {
     populate: [{ path: "category", select: "title" }],
   });
   if (data.length === 0) {
