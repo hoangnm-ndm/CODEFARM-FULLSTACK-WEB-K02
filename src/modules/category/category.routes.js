@@ -1,18 +1,18 @@
 import Router from "express";
-import validBodyRequest from "../middlewares/validBodyRequest.js";
-import { checkPermission } from "../middlewares/checkPermission.js";
-import { checkAuth } from "../middlewares/checkAuth.js";
+import validBodyRequest from "../../shared/middlewares/validBodyRequest.js";
+import { checkPermission } from "../../shared/middlewares/checkPermission.js";
+import { checkAuth } from "../../shared/middlewares/checkAuth.js";
 import {
   categoryCreateSchema,
   categoryUpdateSchema,
-} from "../schemas/category.schema.js";
+} from "./category.schema.js";
 import {
   createCategory,
   getCategories,
   getCategory,
   removeCategory,
   updateCategory,
-} from "../controllers/category.controller.js";
+} from "./category.controller.js";
 
 const categoryRoutes = Router();
 

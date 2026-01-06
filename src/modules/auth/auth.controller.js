@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { JWT_SECRET } from "../configs/dotenvConfig.js";
+import { JWT_SECRET } from "../../shared/configs/dotenvConfig.js";
 
-import User from "../models/User.js";
-import handleAsync from "../utils/handleAsync.js";
-import createError from "../utils/createError.js";
-import createResponse from "../utils/createResponse.js";
+import User from "../user/user.model.js";
+import handleAsync from "../../shared/utils/handleAsync.js";
+import createError from "../../shared/utils/createError.js";
+import createResponse from "../../shared/utils/createResponse.js";
 
 export const signUp = handleAsync(async (req, res) => {
   const { email, password, fullname } = req.body;

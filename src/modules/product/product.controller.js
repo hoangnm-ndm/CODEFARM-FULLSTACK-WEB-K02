@@ -1,7 +1,7 @@
-import Product from "../models/Product.js";
-import createError from "../utils/createError.js";
-import createResponse from "../utils/createResponse.js";
-import handleAsync from "../utils/handleAsync.js";
+import createError from "../../shared/utils/createError.js";
+import createResponse from "../../shared/utils/createResponse.js";
+import handleAsync from "../../shared/utils/handleAsync.js";
+import Product from "./product.model.js";
 
 export const createProduct = handleAsync(async (req, res) => {
   const product = await Product.create(req.body);

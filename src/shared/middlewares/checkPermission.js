@@ -1,5 +1,3 @@
-/** ROLE BASE ACCESS CONTROL */
-
 import createError from "../utils/createError.js";
 
 export const checkPermission = (roles) => (req, res, next) => {

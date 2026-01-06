@@ -1,10 +1,12 @@
-import Category from "../models/Category.js";
-import createError from "../utils/createError.js";
-import createResponse from "../utils/createResponse.js";
-import handleAsync from "../utils/handleAsync.js";
+import createError from "../../shared/utils/createError.js";
+import createResponse from "../../shared/utils/createResponse.js";
+import handleAsync from "../../shared/utils/handleAsync.js";
+import { addSlugUtils } from "../../shared/utils/slugUtils.js";
+import Category from "./category.model.js";
 
 export const createCategory = handleAsync(async (req, res) => {
-  const category = await Category.create(req.body);
+  const slug = addSlugUtils(req.body.title);
+  const category = await Category.create({ ...req.body, slug });
   createResponse(res, 201, "Create successfully!", category);
 });
 
@@ -25,9 +27,14 @@ export const getCategory = handleAsync(async (req, res) => {
 });
 
 export const updateCategory = handleAsync(async (req, res) => {
-  const data = await Category.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  const slug = addSlugUtils(req.body.title);
+  const data = await Category.findByIdAndUpdate(
+    req.params.id,
+    { ...req.body, slug },
+    {
+      new: true,
+    }
+  );
   createResponse(res, 200, "Update successfully!", data);
 });
 

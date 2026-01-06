@@ -4,7 +4,7 @@ const validBodyRequest = (schema) => async (req, res, next) => {
   try {
     const data = await schema.parse(req.body);
     console.log(data);
-    req.data;
+    req.data = data;
     next();
   } catch (error) {
     const errors = error.issues.map((item) => `${item.path}: ${item.message}`);

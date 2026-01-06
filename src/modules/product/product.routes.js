@@ -5,14 +5,11 @@ import {
   getProducts,
   removeProduct,
   updateProduct,
-} from "../controllers/product.controller.js";
-import validBodyRequest from "../middlewares/validBodyRequest.js";
-import {
-  productCreateSchema,
-  productUpdateSchema,
-} from "../schemas/product.schema.js";
-import { checkPermission } from "../middlewares/checkPermission.js";
-import { checkAuth } from "../middlewares/checkAuth.js";
+} from "./product.controller.js";
+import validBodyRequest from "../../shared/middlewares/validBodyRequest.js";
+import { productCreateSchema, productUpdateSchema } from "./product.schema.js";
+import { checkPermission } from "../../shared/middlewares/checkPermission.js";
+import { checkAuth } from "../../shared/middlewares/checkAuth.js";
 
 const productRoutes = Router();
 
