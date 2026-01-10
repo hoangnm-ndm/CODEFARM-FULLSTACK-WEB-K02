@@ -11,6 +11,11 @@ import User from "../user/user.model.js";
 import handleAsync from "../../shared/utils/handleAsync.js";
 import createError from "../../shared/utils/createError.js";
 import createResponse from "../../shared/utils/createResponse.js";
+import { sendMail } from "../mail/sendMail.js";
+import {
+  getTemplateForgotPassword,
+  getTemplateWelcome,
+} from "../mail/mail.template.js";
 
 export const signUp = handleAsync(async (req, res) => {
   const { email, password, fullname } = req.body;
@@ -105,6 +110,42 @@ export const refreshToken = handleAsync(async (req, res) => {
     secure: false, // Chỉ gửi qua https
     sameSite: "strict", // Chống CSRF,
   });
-
   return createResponse(res, 200, "OK", accessToken);
+});
+
+export const sendforgotPassword = handleAsync(async (req, res) => {
+  const { email } = req.body;
+  // * xác nhận người dùng tồn tại trong hệ thống
+  const existUser = await User.findOne({ email });
+  if (!existUser) return createError(res, 404, "Không tìm thấy người dùng");
+  // * tạo một token có secret key doimatkhau expires 5p
+  const forgotToken = jwt.sign({ _id: existUser._id }, "DOIMATKHAU", {
+    expiresIn: "5m",
+  });
+  // * Gửi mail đính kèm đường dẫn móc nối đến FE để đổi mật khẩu
+  await sendMail(
+    existUser.email,
+    "CODEFARM - Quên mật khẩu",
+    getTemplateForgotPassword(forgotToken)
+  );
+  existUser.forgotToken = forgotToken;
+  await existUser.save();
+  return createResponse(res, 200, "OK", existUser);
+});
+
+export const forgotPassword = handleAsync(async (req, res) => {
+  const token = req.headers?.authorization.split(" ")[1];
+  if (!token) return createError(res, 401, "INVALID TOKEN");
+  const decoded = jwt.verify(token, "DOIMATKHAU");
+  const { newPassword } = req.body;
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(newPassword, salt);
+  await User.updateOne(
+    { forgotToken: token, _id: decoded._id },
+    {
+      password: hash,
+      $unset: { forgotToken: "" },
+    }
+  );
+  return createResponse(res, 200, "Thay doi mat khau thanh cong");
 });

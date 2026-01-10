@@ -7,6 +7,7 @@ import { sendMail } from "./src/modules/mail/sendMail.js";
 import { getTemplateWelcome } from "./src/modules/mail/mail.template.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import morgan from "morgan";
 
 const app = express();
 app.use(cookieParser());
@@ -17,14 +18,15 @@ app.use(
     credentials: true,
   })
 );
+app.use(morgan("dev"));
 
 connectDB();
 
 app.use("/", router);
-app.post("/welcome", async (req, res) => {
-  await sendMail("phuclam6987@gmail.com", "CHAO BAN", getTemplateWelcome());
-  return res.status(200).json("ok");
-});
+// app.post("/welcome", async (req, res) => {
+//   await sendMail("phuclam6987@gmail.com", "CHAO BAN", getTemplateWelcome());
+//   return res.status(200).json("ok");
+// });
 
 // * handle Notfound Request
 app.use(notFoundRequest);

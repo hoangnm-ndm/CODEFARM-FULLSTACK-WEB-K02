@@ -10,6 +10,7 @@ export const {
   HOST,
   PORT,
   DB_URI,
+  CLIENT_URI,
   JWT_SECRET,
   JWT_EXPIRES_IN,
   JWT_REFRESH,

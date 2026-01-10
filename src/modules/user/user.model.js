@@ -21,6 +21,9 @@ const userSchema = new Schema(
     refreshToken: {
       type: String,
     },
+    forgotToken: {
+      type: String,
+    },
   },
   { timestamps: true, versionKey: false }
 );
