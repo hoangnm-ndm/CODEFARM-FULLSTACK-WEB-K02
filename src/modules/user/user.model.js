@@ -18,6 +18,9 @@ const userSchema = new Schema(
       type: String,
       default: "member",
     },
+    refreshToken: {
+      type: String,
+    },
   },
   { timestamps: true, versionKey: false }
 );

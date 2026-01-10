@@ -1,6 +1,11 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { JWT_SECRET } from "../../shared/configs/dotenvConfig.js";
+import {
+  JWT_EXPIRES_IN,
+  JWT_REFRESH,
+  JWT_REFRESH_EXPRIRES,
+  JWT_SECRET,
+} from "../../shared/configs/dotenvConfig.js";
 
 import User from "../user/user.model.js";
 import handleAsync from "../../shared/utils/handleAsync.js";
@@ -47,7 +52,21 @@ export const signIn = handleAsync(async (req, res) => {
   if (!isMatched)
     return createError(res, 400, "Email hoac password chua dung!");
 
-  const accessToken = jwt.sign({ _id: userExist._id }, JWT_SECRET);
+  const accessToken = jwt.sign({ _id: userExist._id }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
+  });
+  const refreshToken = jwt.sign({ _id: userExist._id }, JWT_REFRESH, {
+    expiresIn: JWT_REFRESH_EXPRIRES,
+  });
+
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true, // JS Không đọc được
+    secure: false, // Chỉ gửi qua https
+    sameSite: "strict", // Chống CSRF,
+  });
+
+  userExist.refreshToken = refreshToken;
+  await userExist.save();
 
   // * Cách 1: Chuyển JWT về client thông qua JSON.
   createResponse(res, 200, "Dang nhap thanh cong", {
@@ -65,3 +84,27 @@ export const signIn = handleAsync(async (req, res) => {
  * * Cập nhật thông tin người dùng
  * * Get profile me
  */
+
+export const refreshToken = handleAsync(async (req, res) => {
+  const refreshToken = req.cookies.refreshToken;
+  if (!refreshToken) return createError(res, 401, "Unauthenticated");
+  const payload = jwt.verify(refreshToken, JWT_REFRESH);
+  const user = await User.findOne({ refreshToken: refreshToken });
+  if (!payload || !user) return createError(res, 401, "Refresh Token Invalid");
+  const accessToken = jwt.sign({ _id: user._id }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
+  });
+  const newRefreshToken = jwt.sign({ _id: user._id }, JWT_REFRESH, {
+    expiresIn: JWT_REFRESH_EXPRIRES,
+  });
+  user.refreshToken = newRefreshToken;
+  await user.save();
+
+  res.cookie("refreshToken", newRefreshToken, {
+    httpOnly: true, // JS Không đọc được
+    secure: false, // Chỉ gửi qua https
+    sameSite: "strict", // Chống CSRF,
+  });
+
+  return createResponse(res, 200, "OK", accessToken);
+});

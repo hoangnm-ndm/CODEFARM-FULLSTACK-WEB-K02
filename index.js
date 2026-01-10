@@ -5,9 +5,18 @@ import notFoundRequest from "./src/shared/middlewares/notFoundRequest.js";
 import { HOST, PORT } from "./src/shared/configs/dotenvConfig.js";
 import { sendMail } from "./src/modules/mail/sendMail.js";
 import { getTemplateWelcome } from "./src/modules/mail/mail.template.js";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
+app.use(cookieParser());
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 connectDB();
 
