@@ -17,8 +17,12 @@ const productSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Category",
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
   },
-  { versionKey: false, timestamps: true }
+  { versionKey: false, timestamps: true },
 );
 
 // * Tạo model từ schema

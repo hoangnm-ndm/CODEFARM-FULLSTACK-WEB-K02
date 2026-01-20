@@ -17,13 +17,13 @@ productRoutes.get("/", getProducts);
 productRoutes.get("/:id", getProduct);
 
 // * admin, superAdmin
-productRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
+// productRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
 productRoutes.delete("/:id", removeProduct);
 productRoutes.post("/", validBodyRequest(productCreateSchema), createProduct);
 productRoutes.patch(
   "/:id",
   validBodyRequest(productUpdateSchema),
-  updateProduct
+  updateProduct,
 );
 
 export default productRoutes;

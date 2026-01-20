@@ -1,3 +1,5 @@
+import createError from "./createError.js";
+
 export const queryBuilder = async (Model, queryParams, options = {}) => {
   const {
     page = 1,
@@ -23,16 +25,37 @@ export const queryBuilder = async (Model, queryParams, options = {}) => {
   // Áp dụng bộ lọc từ query parameters
   Object.keys(filters).forEach((key) => {
     if (filters[key]) {
-      queryConditions[key] = filters[key];
+      applyFilter(key, filters[key], queryConditions);
+      console.log(queryConditions);
     }
   });
 
   // Áp dụng tìm kiếm nếu có
   if (search && searchFields.length > 0) {
-    const searchRegex = new RegExp(search, "i"); // Không phân biệt chữ hoa/thường
-    queryConditions.$or = searchFields.map((field) => ({
-      [field]: searchRegex,
-    }));
+    // Trong mongoose mình không thể tìm kiếm _id dựa trên string thông thường vì _id của mongo là ObjectId
+    const searchRegex = new RegExp(search, "i");
+    queryConditions.$or = searchFields.map((field) => {
+      if (field === "_id") {
+        // Xử lý đưa id của mongo từ ObjectId thành string
+        return {
+          // $expr (aggregation expression) là một cách đặc biệt cho phép dùng biểu thức kiểu pipeline bên trong $match và $or
+          $expr: {
+            // regex match là biểu thức dùng bên trong stage($expr)
+            $regexMatch: {
+              // input là giá trị nhận vào trong biểu thức regexMatch, $toString là biểu dùng bên trong stage($expr)
+              input: { $toString: "$_id" },
+              // Đưa giá trị tìm kiếm vào
+              regex: search,
+              // option regex
+              options: "i",
+            },
+          },
+        };
+      }
+      return {
+        [field]: searchRegex,
+      };
+    });
   }
 
   // Tạo truy vấn Mongoose với các điều kiện
@@ -64,10 +87,6 @@ export const queryBuilder = async (Model, queryParams, options = {}) => {
   const total = await Model.countDocuments(queryConditions);
   const data = await query.exec();
 
-  if (!data || data.length === 0) {
-    throw createError(404, "Not found");
-  }
-
   return {
     data,
     meta: {
@@ -78,3 +97,29 @@ export const queryBuilder = async (Model, queryParams, options = {}) => {
     },
   };
 };
+
+function applyFilter(key, value, conditional) {
+  if (!value) return;
+
+  if (value === "__nullOrEmpty__") {
+    conditional.$or = [
+      { [key]: null },
+      { [key]: { $exists: false } },
+      { [key]: "" },
+    ];
+    return;
+  }
+
+  if (!isNaN(value)) {
+    conditional[key] = value;
+    return;
+  }
+
+  const matchAt = key.match(/(At)/);
+  if (matchAt) {
+    conditional[key] = new Date(value);
+    return;
+  }
+
+  conditional[key] = value;
+}

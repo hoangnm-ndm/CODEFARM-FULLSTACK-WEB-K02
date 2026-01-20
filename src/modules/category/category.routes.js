@@ -20,17 +20,17 @@ categoryRoutes.get("/", getCategories);
 categoryRoutes.get("/:id", getCategory);
 
 // * admin, superAdmin
-categoryRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
+// categoryRoutes.use(checkAuth, checkPermission(["admin", "superAdmin"]));
 categoryRoutes.delete("/:id", removeCategory);
 categoryRoutes.post(
   "/",
   validBodyRequest(categoryCreateSchema),
-  createCategory
+  createCategory,
 );
 categoryRoutes.patch(
   "/:id",
   validBodyRequest(categoryUpdateSchema),
-  updateCategory
+  updateCategory,
 );
 
 export default categoryRoutes;
